@@ -1,0 +1,163 @@
+﻿@model List<Pharmacy>
+@{
+    ViewData["Title"] = "Pharmacy";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/fontstyle.css">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+
+
+    <link rel="stylesheet" href="~/css/aos.css">
+
+    <link rel="stylesheet" href="~/css/style.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style>
+    ::selection {
+        background-color: #b5e2e7;
+    }
+
+    ::-moz-selection {
+        background-color: #8ac7d8;
+    }
+
+
+    #logbox {
+        padding: 10px;
+        margin: 50px auto;
+        width: 340px;
+        background-color: #fff;
+        -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    }
+
+        h2, h1 {
+            color: black;
+            text-align: center;
+        }
+
+    @* a{
+        color: inherit;
+    }*@
+
+    .input {
+        width: 75%;
+        height: 50px;
+        display: block;
+        margin: 0 auto 15px;
+        padding: 0 15px;
+        border: none;
+        border-bottom: 2px solid #ebebeb;
+    }
+
+    .input:focus {
+        outline: none;
+        border-bottom-color: #3CC !important;
+    }
+
+    .input:hover {
+        border-bottom-color: #dcdcdc;
+    }
+
+    .input:invalid {
+        box-shadow: none;
+    }
+
+    .pass:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px white inset;
+    }
+
+    .inputButton {
+        position: relative;
+        width: 85%;
+        height: 50px;
+        display: block;
+        margin: 30px auto 30px;
+        color: white;
+        background-color: #3CC;
+        border: none;
+        -webkit-box-shadow: 0 5px 0 #2CADAD;
+        -moz-box-shadow: 0 5px 0 #2CADAD;
+        box-shadow: 0 5px 0 #2CADAD;
+    }
+
+    .inputButton:hover {
+        top: 2px;
+        -webkit-box-shadow: 0 3px 0 #2CADAD;
+        -moz-box-shadow: 0 3px 0 #2CADAD;
+        box-shadow: 0 3px 0 #2CADAD;
+    }
+
+    .inputButton:active {
+        top: 5px;
+        box-shadow: none;
+    }
+
+    .inputButton:focus {
+        outline: none;
+    }
+    </style>
+    </head>
+    <body>
+
+        <h1>Список аптек</h1>
+        @if (Model.Count() == 0)
+        {
+            <div style="padding: 20px; background: #ff9800; color: white; opacity: 0.80;" align="center">
+                <strong>Warning!</strong> Список порожній!!!
+            </div>
+        }
+        <p>
+            <a asp-action="CreatePharmacy">Додати нову аптеку в базу даних</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr bgcolor="#feffa7">
+                    <th>
+                        @Html.DisplayNameFor(model => model[0].Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model[0].City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model[0].Address)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.City)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                        <td>
+                            <a href="@Url.Action("EditPharmacy", "Admin", new { id = item.Id })" class="btn btn-sm btn-success">Редагувати</a> |
+                            <a href="@Url.Action("DeletePharmacy", "Admin", new { id = item.Id })" class="btn btn-sm btn-danger">Видалити</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+        </table>
+    </body>
+</html>
+

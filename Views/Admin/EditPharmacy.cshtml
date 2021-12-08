@@ -1,0 +1,157 @@
+﻿@model Pharmacy
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700|Crimson+Text:400,400i" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/fontstyle.css">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
+
+
+    <link rel="stylesheet" href="~/css/aos.css">
+
+    <link rel="stylesheet" href="~/css/style.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style>
+    ::selection {
+        background-color: #b5e2e7;
+    }
+
+    ::-moz-selection {
+        background-color: #8ac7d8;
+    }
+
+
+    #logbox {
+        padding: 10px;
+        margin: 50px auto;
+        width: 340px;
+        background-color: #fff;
+        -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    }
+
+        h2, h1 {
+            color: black;
+            text-align: center;
+        }
+        .control-label {
+            color: black;
+        }
+    @* a{
+        color: inherit;
+    }*@
+
+    .input {
+        width: 75%;
+        height: 50px;
+        display: block;
+        margin: 0 auto 15px;
+        padding: 0 15px;
+        border: none;
+        border-bottom: 2px solid #ebebeb;
+    }
+
+    .input:focus {
+        outline: none;
+        border-bottom-color: #3CC !important;
+    }
+
+    .input:hover {
+        border-bottom-color: #dcdcdc;
+    }
+
+    .input:invalid {
+        box-shadow: none;
+    }
+
+    .pass:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px white inset;
+    }
+
+    .inputButton {
+        position: relative;
+        width: 85%;
+        height: 50px;
+        display: block;
+        margin: 30px auto 30px;
+        color: white;
+        background-color: #3CC;
+        border: none;
+        -webkit-box-shadow: 0 5px 0 #2CADAD;
+        -moz-box-shadow: 0 5px 0 #2CADAD;
+        box-shadow: 0 5px 0 #2CADAD;
+    }
+
+    .inputButton:hover {
+        top: 2px;
+        -webkit-box-shadow: 0 3px 0 #2CADAD;
+        -moz-box-shadow: 0 3px 0 #2CADAD;
+        box-shadow: 0 3px 0 #2CADAD;
+    }
+
+    .inputButton:active {
+        top: 5px;
+        box-shadow: none;
+    }
+
+    .inputButton:focus {
+        outline: none;
+    }
+    </style>
+    </head>
+    <body>
+        <h1>Редагувати дані про аптеку</h1>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="EditPharmacy" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Id" class="control-label"></label>
+                        <input asp-for="Id" class="form-control" readonly />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City" class="control-label"></label>
+                        <p>@Html.DropDownList("City", ViewBag.Cities as SelectList, new { @class = "form-control" })</p>
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Редагувати" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Pharmacies">Повернутися до списку</a>
+        </div>
+    </body>
+</html>
+
+
